@@ -8,4 +8,4 @@ print( 'Sequence ' + DNASeq )
 
 SeqLength = len( DNASeq )
 
-print ( SeqLength )
+print ( 'Length is ' + str( SeqLength ) )
