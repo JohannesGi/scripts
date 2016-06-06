@@ -34,10 +34,10 @@ NumberC = DNASeq.count('C')
 #print('G: ' + str( NumberG / SeqLength ) )
 #print('C: ' + str( NumberC / SeqLength ) )
 
-print ('A: {:.2f}'.format(NumberA / SeqLength))
-print ('T: {:.2f}'.format(NumberT / SeqLength))
-print ('G: {:.2f}'.format(NumberG / SeqLength))
-print ('C: {:.2f}'.format(NumberC / SeqLength))
+print ('A: {:.2f}'.format(NumberA / SeqLength) )
+print ('T: {:.2f}'.format(NumberT / SeqLength) )
+print ('G: {:.2f}'.format(NumberG / SeqLength) )
+print ('C: {:.2f}'.format(NumberC / SeqLength) )
 
 TotalStrong = NumberG + NumberC
 TotalWaek = NumberA + NumberT
