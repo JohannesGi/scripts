@@ -17,11 +17,18 @@ for Line in InFile:
 		#print( ElementList )
 		print( 'Depth:{} Lat:{} Lon:{}'.format( ElementList[4], ElementList[2], ElementList[3] ) )
 
-		SearchString = '(\d+) ([\d.])+ (\w)'
-		Result = re.search(SearchString, ElementList[2] )
-		print( Result )
+		SearchString = '(\d+) ([\d.]+) (\w)'
+		Result = re.search( SearchString, ElementList[2] )
+	
+		Degree = float( Result.group( 1 ) )
+		Minute = float( Result.group( 2 ) )
+		Compass = Result.group( 3 )
+		DecimalDegree = Degree + Minute / 60
 
+		if Compass in 'SW':
+			DecimalDegree = - DecimalDegree
 
+		print ( DecimalDegree )
 
 	Linenumber = Linenumber + 1
 
