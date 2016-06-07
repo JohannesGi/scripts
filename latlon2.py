@@ -2,7 +2,20 @@
 import re
 
 def decimalat(DegreeString):
-		# Converts a string for latitude ot longitude into a float
+	# Converts a string for latitude ot longitude into a float
+	SearchString = '(\d+) ([\d.]+) (\w)'
+	Result = re.search( SearchString, DegreeString )
+	
+	Degree = float( Result.group( 1 ) )
+	Minute = float( Result.group( 2 ) )
+	Compass = Result.group( 3 )
+	DecimalDegree = Degree + Minute / 60
+
+	if Compass in 'SW':
+		DecimalDegree = - DecimalDegree
+
+	return DecimalDegree
+
 
 InFileName = 'Marrus_claudanielis.txt'
 
@@ -20,18 +33,9 @@ for Line in InFile:
 		#print( ElementList )
 		print( 'Depth:{} Lat:{} Lon:{}'.format( ElementList[4], ElementList[2], ElementList[3] ) )
 
-		SearchString = '(\d+) ([\d.]+) (\w)'
-		Result = re.search( SearchString, ElementList[2] )
-	
-		Degree = float( Result.group( 1 ) )
-		Minute = float( Result.group( 2 ) )
-		Compass = Result.group( 3 )
-		DecimalDegree = Degree + Minute / 60
+		latitude = decimalat( ElementList[ 2 ] )
 
-		if Compass in 'SW':
-			DecimalDegree = - DecimalDegree
-
-		print ( DecimalDegree )
+		print (latitude)
 
 	Linenumber = Linenumber + 1
 
