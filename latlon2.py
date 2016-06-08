@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 import re
+import sys
 
-def decimalat(DegreeString):
-	# Converts a string for latitude ot longitude into a float
+
+def decimalat( DegreeString ):
+	# Converts a string for latitude or longitude into a float
 	SearchString = '(\d+) ([\d.]+) (\w)'
 	Result = re.search( SearchString, DegreeString )
 	
@@ -16,8 +18,17 @@ def decimalat(DegreeString):
 
 	return DecimalDegree
 
+assert( decimalat('36 30.0 N') == 36.5 )
+assert( decimalat('36 30.0 S') == -36.5 )
+assert( decimalat('36 30.0 W') == -36.5 )
+#assetions are like little spies testing your code (eg function). If not true, the programm will abort.
 
-InFileName = 'Marrus_claudanielis.txt'
+arguments = sys.argv
+print arguments
+
+InFileName = sys.argv[ 1 ]
+
+#InFileName = 'Marrus_claudanielis.txt'
 
 InFile = open( InFileName, 'r')
 
